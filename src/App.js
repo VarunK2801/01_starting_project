@@ -2,6 +2,8 @@
 // import React from 'react'; if we write code in react object
 import Expenses from "./components/ExpenseList/Expenses";
 
+import NewExpense from "./components/NewExpense/NewExpense";
+
 const App = () => {
   const expensesData = [
     {
@@ -43,7 +45,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>let's start</h1>
+      <NewExpense />
       <h2>ExpenseItems Details</h2>
       {/* {expenses.map((any) => (
         <ExpenseItems data={any}></ExpenseItems>
