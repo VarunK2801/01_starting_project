@@ -1,5 +1,6 @@
 // import ExpenseItems from "./components/ExpenseItems";when we use maps
 // import React from 'react'; if we write code in react object
+import { useState } from "react";
 import Expenses from "./components/ExpenseList/Expenses";
 
 import NewExpense from "./components/NewExpense/NewExpense";
@@ -8,49 +9,49 @@ const App = () => {
   const expensesData = [
     {
       id: "el",
-      name: "Food",
+      title: "Food",
       amount: 500,
       date: new Date(2022, 7, 15),
-      LocationOfExpenditure: "Restaurent dhule",
+      // LocationOfExpenditure: "Restaurent dhule",
     },
     {
       id: "bl",
-      name: "Shopping",
+      title: "Shopping",
       amount: 5000,
       date: new Date(2022, 10, 12),
-      LocationOfExpenditure: "Trends",
+      // LocationOfExpenditure: "Trends",
     },
     {
       id: "ml",
-      name: "Movie",
+      title: "Movie",
       amount: 1000,
       date: new Date(2022, 6, 13),
-      LocationOfExpenditure: "Imax Nasik",
+      // LocationOfExpenditure: "Imax Nasik",
     },
     {
       id: "cl",
-      name: "Tour",
+      title: "Tour",
       amount: 20000,
       date: new Date(2022, 4, 12),
-      LocationOfExpenditure: "gao trip",
-    },
-    {
-      id: "dl",
-      name: "voccation",
-      amount: 30000,
-      date: new Date(2022, 6, 12),
-      LocationOfExpenditure: "Germany",
-    },
+      // LocationOfExpenditure: "gao trip",
+    }
+    
   ];
+  
+  const [expenseList , setExpenseList] = useState(expensesData)
+  const addExpenseHandler = (newExpense) =>{
+    setExpenseList([...expenseList ,newExpense]);
+    console.log(newExpense,"in app.js new expenses");
+  }
 
   return (
     <div>
-      <NewExpense />
-      <h2>ExpenseItems Details</h2>
+      <NewExpense onAddExpense = {addExpenseHandler} />
+     
       {/* {expenses.map((any) => (
         <ExpenseItems data={any}></ExpenseItems>
       ))} */}
-      <Expenses expenses={expensesData} />
+      <Expenses expenses={expenseList} />
       {/* return React.createElement('div',{},
   React.createElement(Expenses,{items:expenses})); react object code */}
     </div>
